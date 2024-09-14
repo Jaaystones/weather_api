@@ -6,9 +6,9 @@ import os
 load_dotenv()
 
 def get_current_weather(city="Lagos"):
-    request_url = f'https://api.openweathermap.org/data/2.5/weather?appid={os.getenv("API_KEY")}&q={city}&units=metric'
-
-    weather_data = requests.get(request_url).json()
+    api_key = os.getenv("API_KEY")
+    api_url = os.getenv("API_URL").format(API_KEY=api_key, city=city)
+    weather_data = requests.get(api_url).json()
 
     return weather_data
 
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # Handle empty strings and string with only spaces
     if not bool(city.strip()):
         city ="Lagos"
-    
+
     weather_data = get_current_weather(city)
     print("\n")
     pprint(weather_data)
