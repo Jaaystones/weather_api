@@ -30,7 +30,8 @@ def get_weather():
         lon=f"{weather_data['coord']['lon']}",
         status=weather_data["weather"][0]["description"].capitalize(),
         temp=f'{weather_data["main"]["temp"]:.1f}',
-        feels_like=f'{weather_data["main"]["feels_like"]:.1f}'
+        feels_like=f'{weather_data["main"]["feels_like"]:.1f}',
+        country=f'{weather_data["sys"]["country"]}'
     )
 
 
